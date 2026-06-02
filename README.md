@@ -1,16 +1,56 @@
-# React + Vite
+# Stepper Form Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend application built with React and Material UI for a configurable multi-step form system.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Dashboard showing available forms
+- Create new form submissions
+- Resume previously saved submissions
+- Dynamic step rendering from backend configuration
+- Support for:
+  - Text fields
+  - Select fields
+  - Radio fields
 
-## React Compiler
+- Step progress tracking
+- Draft saving support
+- Form completion and submission
+- Unsaved changes indicator
+- Responsive Material UI interface
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- React Router
+- Material UI
+- Axios
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Running Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+Build production version:
+
+```bash
+npm run build
+```
+
+## User Flow
+
+1. View available form configurations
+2. Create a new submission
+3. Complete form step-by-step
+4. Save progress as draft
+5. Resume later
+6. Submit once all required fields are completed
