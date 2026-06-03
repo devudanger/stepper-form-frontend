@@ -308,7 +308,7 @@ const StepperForm = () => {
             </Stack>
           </Box>
           {/* STEP JOURNEY */}
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 5 }}>
             {config.steps.map((step, index) => {
               const isCompleted = completedSteps.includes(index);
               const isActive = currentStep === index;
