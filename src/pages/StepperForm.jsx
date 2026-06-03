@@ -128,7 +128,6 @@ const StepperForm = () => {
   const handleSubmit = async () => {
     const isValid = validateCurrentStep();
     if (!isValid) return;
-
     submissionApi
       .submitSubmission({
         id,
@@ -172,8 +171,8 @@ const StepperForm = () => {
         py: 6,
       }}
     >
-      <Container maxWidth="lg">
-        <Stack spacing={4}>
+      <Container sx={{ maxWidth: "lg" }}>
+        <Stack>
           {/* HERO */}
           <Box
             sx={{
@@ -309,7 +308,7 @@ const StepperForm = () => {
             </Stack>
           </Box>
           {/* STEP JOURNEY */}
-          <Box display="flex" alignItems="center">
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             {config.steps.map((step, index) => {
               const isCompleted = completedSteps.includes(index);
               const isActive = currentStep === index;

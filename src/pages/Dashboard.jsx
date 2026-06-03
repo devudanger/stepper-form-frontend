@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   Chip,
+  CircularProgress,
   Container,
   Grid,
   LinearProgress,
@@ -162,62 +163,83 @@ const Dashboard = () => {
               Available Forms
             </Typography>
 
-            <Grid container spacing={3}>
-              {configs.map((config) => (
-                <Grid item xs={12} md={6} key={config._id}>
-                  <Card
-                    sx={{
-                      height: "100%",
-                      borderRadius: 6,
-                      backdropFilter: "blur(20px)",
-                      background: "rgba(255,255,255,.85)",
-                      border: "1px solid rgba(255,255,255,.5)",
-                      boxShadow: "0 10px 40px rgba(15,23,42,.06)",
-                      transition: "all .25s ease",
-                      "&:hover": {
-                        transform: "translateY(-6px)",
-                        boxShadow: "0 20px 60px rgba(37,99,235,.15)",
-                      },
-                    }}
-                  >
-                    <CardContent>
-                      <Stack spacing={2}>
-                        <Chip
-                          label={`${config.steps.length} Steps`}
-                          color="primary"
-                          sx={{
-                            width: "fit-content",
-                          }}
-                        />
+            {loading ? (
+              <CircularProgress />
+            ) : configs.length === 0 ? (
+              <Card
+                sx={{
+                  p: 8,
+                  borderRadius: 6,
+                  textAlign: "center",
+                  background: "rgba(255,255,255,.8)",
+                  backdropFilter: "blur(20px)",
+                }}
+              >
+                <Typography variant="h5" fontWeight={700}>
+                  No forms available
+                </Typography>
+                <Typography color="text.secondary" mt={1}>
+                  All previous forms are expired.
+                </Typography>
+              </Card>
+            ) : (
+              <Grid container spacing={3}>
+                {configs.map((config) => (
+                  <Grid item xs={12} md={6} key={config._id}>
+                    <Card
+                      sx={{
+                        height: "100%",
+                        borderRadius: 6,
+                        backdropFilter: "blur(20px)",
+                        background: "rgba(255,255,255,.85)",
+                        border: "1px solid rgba(255,255,255,.5)",
+                        boxShadow: "0 10px 40px rgba(15,23,42,.06)",
+                        transition: "all .25s ease",
+                        "&:hover": {
+                          transform: "translateY(-6px)",
+                          boxShadow: "0 20px 60px rgba(37,99,235,.15)",
+                        },
+                      }}
+                    >
+                      <CardContent>
+                        <Stack spacing={2}>
+                          <Chip
+                            label={`${config.steps.length} Steps`}
+                            color="primary"
+                            sx={{
+                              width: "fit-content",
+                            }}
+                          />
 
-                        <Typography variant="h6" fontWeight={700}>
-                          {config.title}
-                        </Typography>
+                          <Typography variant="h6" fontWeight={700}>
+                            {config.title}
+                          </Typography>
 
-                        <Typography color="text.secondary">
-                          Track your progress with draft saving support.
-                        </Typography>
+                          <Typography color="text.secondary">
+                            Track your progress with draft saving support.
+                          </Typography>
 
-                        <Button
-                          variant="contained"
-                          onClick={handleCreateSubmission}
-                          sx={{
-                            borderRadius: 3,
-                            py: 1,
-                            textTransform: "none",
-                            fontWeight: 700,
-                            boxShadow: "0 10px 30px rgba(37,99,235,.25)",
-                            fontSize: "16px",
-                          }}
-                        >
-                          Create Submission
-                        </Button>
-                      </Stack>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
+                          <Button
+                            variant="contained"
+                            onClick={handleCreateSubmission}
+                            sx={{
+                              borderRadius: 3,
+                              py: 1,
+                              textTransform: "none",
+                              fontWeight: 700,
+                              boxShadow: "0 10px 30px rgba(37,99,235,.25)",
+                              fontSize: "16px",
+                            }}
+                          >
+                            Create Submission
+                          </Button>
+                        </Stack>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            )}
           </Box>
           <Box>
             <Typography
