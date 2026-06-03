@@ -163,9 +163,7 @@ const Dashboard = () => {
               Available Forms
             </Typography>
 
-            {loading ? (
-              <CircularProgress />
-            ) : configs.length === 0 ? (
+            {configs.length === 0 ? (
               <Card
                 sx={{
                   p: 8,
@@ -175,12 +173,19 @@ const Dashboard = () => {
                   backdropFilter: "blur(20px)",
                 }}
               >
-                <Typography variant="h5" fontWeight={700}>
-                  No forms available
-                </Typography>
-                <Typography color="text.secondary" mt={1}>
-                  All previous forms are expired.
-                </Typography>
+                {loading ? (
+                  <CircularProgress />
+                ) : (
+                  <>
+                    {" "}
+                    <Typography variant="h5" fontWeight={700}>
+                      No forms available
+                    </Typography>
+                    <Typography color="text.secondary" mt={1}>
+                      All previous forms are expired.
+                    </Typography>
+                  </>
+                )}
               </Card>
             ) : (
               <Grid container spacing={3}>
@@ -259,21 +264,28 @@ const Dashboard = () => {
                   backdropFilter: "blur(20px)",
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: 70,
-                    mb: 2,
-                  }}
-                >
-                  {" "}
-                  📋
-                </Typography>
-                <Typography variant="h5" fontWeight={700}>
-                  No submissions yet
-                </Typography>
-                <Typography color="text.secondary" mt={1}>
-                  Create your first form submission from one of the forms above.
-                </Typography>
+                {loading ? (
+                  <CircularProgress />
+                ) : (
+                  <>
+                    <Typography
+                      sx={{
+                        fontSize: 70,
+                        mb: 2,
+                      }}
+                    >
+                      {" "}
+                      📋
+                    </Typography>
+                    <Typography variant="h5" fontWeight={700}>
+                      No submissions yet
+                    </Typography>
+                    <Typography color="text.secondary" mt={1}>
+                      Create your first form submission from one of the forms
+                      above.
+                    </Typography>
+                  </>
+                )}
               </Card>
             ) : (
               <Grid container spacing={3}>
